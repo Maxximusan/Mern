@@ -9,18 +9,20 @@ const router = Router();
 
 const validation = [
   check("email", "Некоректный email").isEmail(),
-  check("password", "минимальныя доинна пароля 6 символов").isLength({
+  check("password", "минимальныя длинна пароля 6 символов").isLength({
     min: 6,
   }),
 ];
 
 const validationForLogin = [
   check("email", "Введите коректный email").normalizeEmail().isEmail(),
-  check("password", "минимальныя доинна пароля 6 символов").exists(),
+  check("password", "минимальныя длинна пароля 6 символов").exists(),
 ];
-//РЕГИСТРАЦИЯ
+//РЕГИСТРАЦИЯ - /api/auth/register
 router.post("/register", validation, async (request, responce) => {
   try {
+    console.log("ЧТО ТУТ НАХУЙ ПРОИСХОДИТ В BODY?", request.body);
+
     //обработка Валидации
     const errors = validationResult(request);
 
@@ -61,7 +63,7 @@ router.post("/register", validation, async (request, responce) => {
   }
 });
 
-// ЛОГИН
+// ЛОГИН - /api/auth/login
 router.post("/login", validationForLogin, async (req, res) => {
   try {
     //обработка Валидации
