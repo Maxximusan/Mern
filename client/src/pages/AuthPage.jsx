@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useHttp } from "../hooks/http.hook";
 import { useMessage } from "../hooks/message.hook";
+import { AuthContext } from "../context/authContext";
 
 export const AuthPage = () => {
+    const auth = useContext(AuthContext)
     const [form, setform] = useState({ email: '', password: '' })
     const { loading, request, error, clearError} = useHttp()
     const message = useMessage()
@@ -33,7 +35,8 @@ export const AuthPage = () => {
         try {
             const data = await request('/api/auth/login', 'POST', { ...form })
             console.log('DATA', data);
-            message(data.message)
+            // message(data.message)
+            auth.login(data.token, data.id)
             
         } catch (err) {
             
@@ -48,14 +51,14 @@ export const AuthPage = () => {
         <div className="card-content white-text">
           <span className="card-title">Авторизация</span>
              <div>
-                    <div className="input-field ">
-                                <input
-                                    placeholder="Введите емейл"
-                                    id="email"
-                                    type="text"
-                                    name="email"
-                                    className="yellow-input"
-                                    onChange={changeHandler}
+                 <div className="input-field ">
+                          <input
+                               placeholder="Введите емейл"
+                              id="email"
+                               type="text"
+                            name="email"
+                              className="yellow-input"
+                             onChange={changeHandler}
                                 />
                                 
           <label htmlFor="Email"></label>
