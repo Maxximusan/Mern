@@ -12,6 +12,7 @@ const app = express();
 app.use(express.json({ exxtended: true }));
 
 app.use("/api/auth", require("./routes/authRoutes"));
+app.use("/api/link", require("./routes/linkRoutes"));
 
 const PORT = config.get("port") || 5000;
 

@@ -100,7 +100,7 @@ router.post("/login", validationForLogin, async (req, res) => {
     // отвечаем человеку (на фронт)
     res.json({ token, userId: user.id });
   } catch (error) {
-    responce.status(500).json({ message: "Что-то пошло не так" });
+    responce.status(500).json({ message: "Что-то пошло не так (auth routes)" });
   }
 });
 
