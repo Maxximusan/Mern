@@ -1,5 +1,5 @@
 //mongodb+srv://Daenerys:<db_password>@cluster0.rljh9.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
-// PMMAJAUGPpRYk7qk
+// motherofdragons
 //Daenerys
 
 const express = require("express");
@@ -9,7 +9,7 @@ const mongoose = require("mongoose");
 const app = express();
 
 //чтобы парсить в формате json - чтобы request.body(в authRouter) был объект, а не undefined
-app.use(express.json({ exxtended: true }));
+app.use(express.json({ extended: true }));
 
 app.use("/api/auth", require("./routes/authRoutes"));
 app.use("/api/link", require("./routes/linkRoutes"));

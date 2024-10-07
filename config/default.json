@@ -1,6 +1,6 @@
 {
   "port": 5000,
   "jwtSecretKey": "we will go",
-  "mongoURI": "mongodb+srv://Daenerys:PMMAJAUGPpRYk7qk@cluster0.rljh9.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0",
+  "mongoURI": "mongodb+srv://Daenerys:motherofdragons@cluster0.rljh9.mongodb.net/Mern-2.0?retryWrites=true&w=majority&appName=Cluster0",
   "baseUrl": "http://localhost:5000"
 }

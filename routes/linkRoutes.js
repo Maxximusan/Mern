@@ -1,6 +1,7 @@
 const { Router } = require("express");
-// const uid = require("uid");
-const { v4: uuidv4 } = require("uuid");
+const uid = require("uid");
+// const { v4: uuidv4 } = require("uuid");
+// const shortId = require("shortid");
 const config = require("config");
 const Link = require("../models/Link");
 const auth = require("../middleware/auth.middleware");
@@ -12,8 +13,9 @@ router.post("/generate", auth, async (request, responce) => {
     const baseUrl = config.get("baseUrl");
     const { from } = request.body;
 
-    // const code = uid();
-    const code = uuidv4();
+    const code = uid();
+    // const code = uuidv4();
+    // const code = shortId.generate();
     console.log(code);
 
     const existing = await Link.findOne({ from });
